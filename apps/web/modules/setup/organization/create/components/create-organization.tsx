@@ -36,12 +36,8 @@ export const CreateOrganization = () => {
       setIsSubmitting(true);
       const createOrganizationResponse = await createOrganizationAction({ organizationName });
       if (createOrganizationResponse?.serverError) {
-        toast.error(createOrganizationResponse.serverError);
-        setIsSubmitting(false);
-        return;
-      }
-      if (createOrganizationResponse?.serverError) {
-        toast.error(createOrganizationResponse.serverError);
+        console.error(createOrganizationResponse.serverError);
+        toast.error(t("setup.organization.create.error"));
         setIsSubmitting(false);
         return;
       }
